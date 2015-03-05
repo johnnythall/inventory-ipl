@@ -1,0 +1,33 @@
+<%- model_class = Asset -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:asset_id) %>:</strong></dt>
+  <dd><%= @asset.asset_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @asset.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @asset.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dd><%= @asset.category_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location_id) %>:</strong></dt>
+  <dd><%= @asset.location_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:value) %>:</strong></dt>
+  <dd><%= @asset.value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:available) %>:</strong></dt>
+  <dd><%= @asset.available %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:access_level) %>:</strong></dt>
+  <dd><%= @asset.access_level %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              assets_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_asset_path(@asset), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              asset_path(@asset),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

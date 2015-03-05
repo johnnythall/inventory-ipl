@@ -1,0 +1,59 @@
+<%= form_for @rental, :html => { :class => "form-horizontal rental" } do |f| %>
+
+    <% if @rental.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@rental[:user_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :list_of_assets, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :list_of_assets, :class => 'form-control' %>
+    </div>
+    <%= error_span(@rental[:list_of_assets]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :rented_by_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rented_by_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@rental[:rented_by_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@rental[:start_date]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@rental[:end_date]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            rentals_path, :class => 'btn btn-default' %>
+
+<% end %>
